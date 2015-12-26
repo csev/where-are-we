@@ -1,6 +1,11 @@
 <?php
 require_once "setup.php";
 
+if ( isset($_COOKIE['beta']) ) {
+    require "beta.php";
+    return;
+}
+
 $date1 = new DateTime($live);
 $now = new DateTime();
 $difference_in_seconds = $date1->format('U') - $now->format('U');
