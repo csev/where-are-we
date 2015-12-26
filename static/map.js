@@ -13,32 +13,30 @@ function initialize_map(lat,lng) {
   }
 
   map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-
+/*
   var marker = new google.maps.Marker({
     draggable: true,
     position: myLatlng,
     map: map,
     title: "Yo"
   });
-
-/*
-  // Add the other points
-  window.console && console.log("Loading "+other_points.length+" points");
-  for ( var i = 0; i < other_points.length; i++ ) {
-    var row = other_points[i];
-    // if ( i < 3 ) { alert(row); }
-    var newLatlng = new google.maps.LatLng(row[0], row[1]);
-    var iconpath = '/static/img/icons/';
-    console.log(row);
-    var icon = row[3] ? 'green-dot.png' : 'green.png';
-    var marker = new google.maps.Marker({
-      position: newLatlng,
-      map: map,
-      icon: iconpath + icon,
-      title : row[2]
-     });
-  }
 */
+    $.getJSON('data.php?lat='+lat+'&lng='+lng, function(other_points) {
+        window.console && console.log("Loading "+other_points.length+" points");
+        for ( var i = 0; i < other_points.length; i++ ) {
+            var row = other_points[i];
+            var newLatlng = new google.maps.LatLng(row.lat, row.lng);
+            var iconpath = 'static/img/icons/';
+            console.log(row);
+            var icon = row[3] ? 'green-dot.png' : 'green.png';
+            var marker = new google.maps.Marker({
+                position: newLatlng,
+                map: map,
+                icon: iconpath + icon,
+                title : 'row[3]'
+            });
+    }
+    }).fail( function() { alert('getJSON fail'); } );
 }
 
 function GetLocation(location) {

@@ -19,5 +19,8 @@ if ( ! isset($_COOKIE['beta']) ) {
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 <script src="static/map.js?x=2"></script>
+<script>
+setTimeout(function(){ window.location.reload(true); }, 3*60000);
+</script>
 </body>
 
