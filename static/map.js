@@ -7,7 +7,7 @@ function initialize_map(lat,lng) {
   window.console && console.log("Building map...");
 
   var myOptions = {
-     zoom: 9,
+     zoom: 10,
      center: myLatlng,
      mapTypeId: google.maps.MapTypeId.ROADMAP
   }

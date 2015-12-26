@@ -15,9 +15,9 @@ if ( ! isset($_COOKIE['beta']) ) {
 <h2 id="please">Please share your location with Where-Are-We<br/>
 <img src="static/ajaxSpinner.gif">
 </h2>
-<div id="map_canvas" style="display: none; margin: 10px; width:95%; height:600px"></div>
+<div id="map_canvas" style="display: none; margin: 10px; width:95%; height:100%"></div>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-<script src="static/map.js"></script>
+<script src="static/map.js?x=2"></script>
 </body>
 
