@@ -30,7 +30,7 @@ $refresh = $refresh + rand(0,10*1000);
 ?>
 <html>
 	<head>
-		<title>Next Generation Teaching and Learning - Coming Soon</title>
+		<title>Where Are We - Group Tracking From whrwe.com - Coming Soon</title>
 		<link rel="stylesheet" href="compiled/flipclock.css">
 
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
