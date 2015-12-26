@@ -80,3 +80,4 @@ create table context_map (
     UNIQUE(context_id, user_id)
 ) ENGINE = InnoDB DEFAULT CHARSET=utf8;
 
+*/

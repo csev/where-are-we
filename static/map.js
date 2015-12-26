@@ -41,26 +41,4 @@ function initialize_map(lat,lng) {
 
 $(document).ready(function() {
     initialize_map();
-
-    $('#prefs_save').click(function(event) {
-        $('#spinner').show();
-        var form = $('#prefs_form');
-        var allow_name = form.find('input[name="allow_name"]').is(':checked') ? 1 : 0 ;
-        var allow_first = form.find('input[name="allow_first"]').is(':checked') ? 1 : 0 ;
-        var allow_email = form.find('input[name="allow_email"]').is(':checked') ? 1 : 0 ;
-        window.console && console.log('Sending POST');
-        $.post( '<?php echo(addSession('update.php')); ?>',
-           { 'allow_name': allow_name, 'allow_first': allow_first, 'allow_email': allow_email },
-          function( data ) {
-              window.console && console.log(data);
-              $('#spinner').hide();
-              $('#prefs').modal('hide');
-          }
-        ).error( function() {
-            window.console && console.log('POST returned error');
-            $('#spinner').hide();
-            $('#save_fail').show();
-        });
-        return false;
-      });
 } );
