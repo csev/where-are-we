@@ -37,9 +37,7 @@ $refresh = $refresh + rand(0,10*1000);
 	<head>
 		<title>Where Are We - Group Tracking From whrwe.com - Coming Soon</title>
 		<link rel="stylesheet" href="compiled/flipclock.css">
-
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script src="compiled/flipclock.js"></script>
 	</head>
 
