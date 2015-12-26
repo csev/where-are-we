@@ -7,7 +7,7 @@ function initialize_map(lat,lng) {
   window.console && console.log("Building map...");
 
   var myOptions = {
-     zoom: 3,
+     zoom: 9,
      center: myLatlng,
      mapTypeId: google.maps.MapTypeId.ROADMAP
   }
@@ -21,6 +21,7 @@ function initialize_map(lat,lng) {
     title: "Yo"
   });
 
+/*
   // Add the other points
   window.console && console.log("Loading "+other_points.length+" points");
   for ( var i = 0; i < other_points.length; i++ ) {
@@ -37,8 +38,18 @@ function initialize_map(lat,lng) {
       title : row[2]
      });
   }
+*/
+}
+
+function GetLocation(location) {
+    $('#please').hide();
+    $('#map_canvas').show();
+    window.console && console.log(location.coords.latitude);
+    window.console && console.log(location.coords.longitude);
+    window.console && console.log(location.coords.accuracy);
+    initialize_map(location.coords.latitude, location.coords.longitude);
 }
 
 $(document).ready(function() {
-    initialize_map();
+    navigator.geolocation.getCurrentPosition(GetLocation);
 } );
