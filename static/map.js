@@ -25,7 +25,7 @@ function initialize_map(lat,lng) {
         window.console && console.log("Loading "+other_points.length+" points");
         for ( var i = 0; i < other_points.length; i++ ) {
             var row = other_points[i];
-            var newLatlng = new google.maps.LatLng(row.lat, row.lng);
+            var newLatlng = new google.maps.LatLng(row.lat0, row.lng0);
             var iconpath = 'static/img/icons/';
             console.log(row);
             var icon = row[3] ? 'green-dot.png' : 'green.png';
@@ -33,7 +33,7 @@ function initialize_map(lat,lng) {
                 position: newLatlng,
                 map: map,
                 icon: iconpath + icon,
-                title : 'row[3]'
+                title : row.displayname
             });
     }
     }).fail( function() { alert('getJSON fail'); } );

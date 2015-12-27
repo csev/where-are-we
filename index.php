@@ -1,7 +1,7 @@
 <?php
 require_once "setup.php";
 
-if ( isset($_COOKIE['beta']) ) {
+if ( isset($_COOKIE['user_key']) ) {
     require "beta.php";
     return;
 }

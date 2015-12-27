@@ -2,8 +2,11 @@
 
 require_once "pdo.php";
 
-if ( ! isset($_COOKIE['beta']) ) {
-    setcookie('beta','xyzzy',time() + (86400 * 30));
+if ( isset($_COOKIE['user_key']) ) {
+    $user_key = $_COOKIE['user_key'];
+} else {
+    $user_key = bin2hex(openssl_random_pseudo_bytes(32));
+    setcookie('user_key',$user_key,time() + (86400 * 120));
 }
 
 ?>
