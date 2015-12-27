@@ -13,14 +13,14 @@ function initialize_map(lat,lng) {
   }
 
   map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-/*
+
   var marker = new google.maps.Marker({
     draggable: true,
     position: myLatlng,
     map: map,
-    title: "Yo"
+    title: "You"
   });
-*/
+
     $.getJSON('data.php?lat='+lat+'&lng='+lng, function(other_points) {
         window.console && console.log("Loading "+other_points.length+" points");
         for ( var i = 0; i < other_points.length; i++ ) {

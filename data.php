@@ -12,10 +12,11 @@ session_start();
 require_once 'pdo.php';
 header("Content-type: application/json; charset=utf-8");
 
-// $pdo->query('DELETE FROM user WHERE updated_at < (UNIX_TIMESTAMP() - 10000)');
-// $pdo->query('DELETE FROM context_map WHERE updated_at < (UNIX_TIMESTAMP() - 10000)');
+$pdo->query('DELETE FROM user WHERE login_at < DATE_SUB(NOW(), INTERVAL 100 MINUTE)');
+$pdo->query('DELETE FROM context_map WHERE updated_at < DATE_SUB(NOW(), INTERVAL 100 MINUTE)');
 
-$stmt = $pdo->prepare('INSERT INTO user (user_key, user_sha256) VALUES ( :sid, :sid )
+$stmt = $pdo->prepare('INSERT INTO user 
+    (user_key, user_sha256, login_at) VALUES ( :sid, :sid, NOW() )
     ON DUPLICATE KEY UPDATE login_at = NOW()');
 $stmt->execute(array( ':sid' => session_id() ));
 
@@ -24,8 +25,9 @@ $stmt->execute(array( ':sid' => session_id() ));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 $user_id = $row['user_id'];
 
-$stmt = $pdo->prepare('INSERT INTO context_map ( context_id, user_id, lat, lng )
-   VALUES ( 1, :uid, :lat, :lng)
+$stmt = $pdo->prepare('INSERT INTO context_map 
+   ( context_id, user_id, lat, lng, updated_at )
+   VALUES ( 1, :uid, :lat, :lng, NOW() )
    ON DUPLICATE KEY UPDATE lat=:lat,lng=:lng,updated_at=NOW()');
 $stmt->execute(array( ':uid' => $user_id, ':lat' => $lat, ':lng' => $lng ));
 
