@@ -57,10 +57,28 @@ if ( $delta < 0.002 ) {
 }
 
 
-$stmt = $pdo->prepare('SELECT displayname,email,lat0,lng0
+$stmt = $pdo->prepare('SELECT displayname,email,lat0,lng0,lat1,lng1,lat2,lng2,lat3,lng3
     FROM context_map JOIN user ON context_map.user_id = user.user_id 
     WHERE context_id = 1 AND context_map.user_id != :uid');
 $stmt->execute(array( ':uid' => $user_id ));
-$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$rows = array();
+while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) ) {
+    $dat = array();
+    $dat['displayname'] = $row['displayname'];
+
+    $latdat = array();
+    $latdat[] = $row['lat0'];
+
+    $lngdat = array();
+    $lngdat[] = $row['lng0'];
+    for($i=1;$i<=3;$i++) {
+        if ( is_null($row['lat'.$i]) || is_null($row['lng'.$i]) ) continue;
+        $latdat[] = $row['lat'.$i];
+        $lngdat[] = $row['lng'.$i];
+    }
+    $dat['lat'] = $latdat;
+    $dat['lng'] = $lngdat;
+    $rows[] = $dat;
+}
 echo(json_encode($rows,JSON_PRETTY_PRINT));
 

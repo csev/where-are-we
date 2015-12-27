@@ -18,14 +18,14 @@ function initialize_map(lat,lng) {
     draggable: true,
     position: myLatlng,
     map: map,
-    title: "You"
+    title: "Your location"
   });
 
     $.getJSON('data.php?lat='+lat+'&lng='+lng, function(other_points) {
         window.console && console.log("Loading "+other_points.length+" points");
         for ( var i = 0; i < other_points.length; i++ ) {
             var row = other_points[i];
-            var newLatlng = new google.maps.LatLng(row.lat0, row.lng0);
+            var newLatlng = new google.maps.LatLng(row.lat[0], row.lng[0]);
             var iconpath = 'static/img/icons/';
             console.log(row);
             var icon = row[3] ? 'green-dot.png' : 'green.png';
@@ -35,7 +35,21 @@ function initialize_map(lat,lng) {
                 icon: iconpath + icon,
                 title : row.displayname
             });
-    }
+            var coords = Array();
+            if ( row.lat.length >= 1 ) {
+                for ( var j=0; j < row.lat.length; j++) {
+                    coords.push({lat: parseFloat(row.lat[j]), lng: parseFloat(row.lng[j])});
+                }
+                var travel = new google.maps.Polyline({
+                    path: coords,
+                    geodesic: true,
+                    strokeColor: '#FF0000',
+                    strokeOpacity: 1.0,
+                    strokeWeight: 2
+                });
+                travel.setMap(map);
+            }
+        }
     }).fail( function() { alert('getJSON fail'); } );
 }
 
