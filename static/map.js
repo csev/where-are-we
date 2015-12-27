@@ -48,6 +48,15 @@ function GetLocation(location) {
     initialize_map(location.coords.latitude, location.coords.longitude);
 }
 
+function NoLocation(error) {
+    alert('Unable to load location, check settings. Error code: ' + error.code);
+    // error.code can be:
+    //   0: unknown error
+    //   1: permission denied
+    //   2: position unavailable (error response from location provider)
+    //   3: timed out
+  };
+
 $(document).ready(function() {
-    navigator.geolocation.getCurrentPosition(GetLocation);
+    navigator.geolocation.getCurrentPosition(GetLocation,NoLocation);
 } );
