@@ -59,12 +59,23 @@ INSERT INTO context (context_sha256, context_key) VALUES ('a','a');
 create table context_map (
     context_id  INTEGER NOT NULL,
     user_id     INTEGER NOT NULL,
-    lat         FLOAT,
-    lng         FLOAT,
-    color       INTEGER,
-    email       TINYINT,
-    name        TINYINT,
-    first       TINYINT,
+
+    lat0        FLOAT,
+    lng0        FLOAT,
+    when0       TIMESTAMP,
+
+    lat1        FLOAT,
+    lng1        FLOAT,
+    when1       TIMESTAMP,
+
+    lat2        FLOAT,
+    lng2        FLOAT,
+    when2       TIMESTAMP,
+
+    lat3        FLOAT,
+    lng3        FLOAT,
+    when3       TIMESTAMP,
+
     updated_at  DATETIME NOT NULL,
 
     CONSTRAINT `context_map_ibfk_1`
