@@ -19,7 +19,7 @@ header("Content-type: application/json; charset=utf-8");
 $current = isset($_COOKIE['emoji']) ? $_COOKIE['emoji'] : null;
 $name = isset($_COOKIE['name']) ? $_COOKIE['name'] : null;
 
-$pdo->query('DELETE FROM user WHERE login_at < DATE_SUB(NOW(), INTERVAL 72 MINUTE)');
+$pdo->query('DELETE FROM user WHERE login_at < DATE_SUB(NOW(), INTERVAL 30 DAY)');
 $pdo->query('DELETE FROM context_map WHERE updated_at < DATE_SUB(NOW(), INTERVAL 72 MINUTE)');
 
 $stmt = $pdo->prepare('INSERT INTO user 
