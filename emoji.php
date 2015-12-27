@@ -15,6 +15,10 @@ foreach( $files1 as $fn ) {
     $files2[] = $fn;
 }
 sort($files2);
+$output = array(
+'path' => 'static/emoji/e1-png/sel',
+'emojis' => $files2
+);
 
-echo(json_encode($files2,JSON_PRETTY_PRINT));
+echo(json_encode($output,JSON_PRETTY_PRINT));
 

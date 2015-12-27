@@ -16,13 +16,22 @@ $lng = $_GET['lng'];
 require_once 'pdo.php';
 header("Content-type: application/json; charset=utf-8");
 
-$pdo->query('DELETE FROM user WHERE login_at < DATE_SUB(NOW(), INTERVAL 100 MINUTE)');
-$pdo->query('DELETE FROM context_map WHERE updated_at < DATE_SUB(NOW(), INTERVAL 100 MINUTE)');
+$current = isset($_COOKIE['emoji']) ? $_COOKIE['emoji'] : null;
+$name = isset($_COOKIE['name']) ? $_COOKIE['name'] : null;
+
+$pdo->query('DELETE FROM user WHERE login_at < DATE_SUB(NOW(), INTERVAL 72 MINUTE)');
+$pdo->query('DELETE FROM context_map WHERE updated_at < DATE_SUB(NOW(), INTERVAL 72 MINUTE)');
 
 $stmt = $pdo->prepare('INSERT INTO user 
-    (user_key, user_sha256, login_at) VALUES ( :sid, :sid, NOW() )
-    ON DUPLICATE KEY UPDATE login_at = NOW()');
-$stmt->execute(array( ':sid' => $user_key ));
+    (user_key, user_sha256, displayname, emoji, login_at) 
+    VALUES ( :sid, :sid, :name, :emoji, NOW() )
+    ON DUPLICATE KEY 
+    UPDATE displayname=:name, emoji=:emoji, login_at = NOW()');
+$stmt->execute(array( 
+    ':sid' => $user_key,
+    ':emoji' => $current,
+    ':name' => $name
+));
 
 $stmt = $pdo->prepare('SELECT user.user_id,lat0,lng0,when0 
     FROM user LEFT JOIN context_map ON context_map.user_id = user.user_id
@@ -57,7 +66,7 @@ if ( $delta < 0.002 ) {
 }
 
 
-$stmt = $pdo->prepare('SELECT displayname,email,lat0,lng0,lat1,lng1,lat2,lng2,lat3,lng3
+$stmt = $pdo->prepare('SELECT displayname,emoji,lat0,lng0,lat1,lng1,lat2,lng2,lat3,lng3
     FROM context_map JOIN user ON context_map.user_id = user.user_id 
     WHERE context_id = 1 AND context_map.user_id != :uid');
 $stmt->execute(array( ':uid' => $user_id ));
@@ -65,6 +74,7 @@ $rows = array();
 while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) ) {
     $dat = array();
     $dat['displayname'] = $row['displayname'];
+    $dat['emoji'] = $row['emoji'];
 
     $latdat = array();
     $latdat[] = $row['lat0'];

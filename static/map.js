@@ -14,10 +14,22 @@ function initialize_map(lat,lng) {
 
   map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
+  // http://stackoverflow.com/questions/15096461/resize-google-maps-marker-icon-image
+  var myemoji = 'static/img/icons/red-dot.png'
+  var emoji = getCookie('emoji');
+  if ( emoji.length > 0 ) {
+    myemoji = 'static/emoji/e1-png/sel/' + emoji;
+  }
   var marker = new google.maps.Marker({
-    draggable: true,
+    // draggable: true,
     position: myLatlng,
     map: map,
+    icon: {
+        url: myemoji,
+        scaledSize: new google.maps.Size(32,32),
+        origin: new google.maps.Point(0, 0), // origin
+        anchor: new google.maps.Point(16, 16) // anchor
+    },
     title: "Your location"
   });
 
@@ -26,13 +38,20 @@ function initialize_map(lat,lng) {
         for ( var i = 0; i < other_points.length; i++ ) {
             var row = other_points[i];
             var newLatlng = new google.maps.LatLng(row.lat[0], row.lng[0]);
-            var iconpath = 'static/img/icons/';
             console.log(row);
-            var icon = row[3] ? 'green-dot.png' : 'green.png';
+            var iconurl = 'static/img/icons/green.png';
+            if ( typeof row.emoji == "string" ) {
+                iconurl = 'static/emoji/e1-png/sel/'+row.emoji;
+            }
             var marker = new google.maps.Marker({
                 position: newLatlng,
                 map: map,
-                icon: iconpath + icon,
+                icon: {
+                    url: iconurl,
+                    scaledSize: new google.maps.Size(32, 32),
+                    origin: new google.maps.Point(0, 0), // origin
+                    anchor: new google.maps.Point(16, 16) // anchor
+                },
                 title : row.displayname
             });
             var coords = Array();

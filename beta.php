@@ -14,6 +14,7 @@ if ( isset($_COOKIE['user_key']) ) {
 <head>
 <title>Beta Test</title>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<?php require_once "head.php"; ?>
 </head>
 <body>
 <h2 id="please">Please share your location with Where-Are-We<br/>
@@ -21,11 +22,11 @@ if ( isset($_COOKIE['user_key']) ) {
 </h2>
 <div id="map_canvas" style="display: none; width:100%; height:100%"></div>
 <div id="hamburger" style="margin:20px; position: absolute; right: 0; top: 0; z-index: 10;"><a href="config.php"><img src="static/img/hamburger.png" style="height:7%;"></a></div>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="//maps.googleapis.com/maps/api/js"></script>
+<?php require_once "foot-begin.php"; ?>
 <script src="static/map.js?x=<?= rand() ?>"></script>
 <script>
 setTimeout(function(){ window.location.reload(true); }, 4*60000);
 </script>
+<?php require_once "foot-end.php"; ?>
 </body>
 
