@@ -17,6 +17,7 @@ if ( ! isset($_COOKIE['beta']) ) {
 <img src="static/ajaxSpinner.gif">
 </h2>
 <div id="map_canvas" style="display: none; width:100%; height:100%"></div>
+<div id="hamburger" style="margin:20px; position: absolute; right: 0; top: 0; z-index: 10;"><a href="config.php"><img src="static/img/hamburger.png" style="height:7%;"></a></div>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="//maps.googleapis.com/maps/api/js"></script>
 <script src="static/map.js?x=<?= rand() ?>"></script>
