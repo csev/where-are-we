@@ -1,0 +1,60 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "fe11f21b271a4e1a46c13ca3add7e517",
+    "content-hash": "a86c8ca1216e9e2dafc351891e27064a",
+    "packages": [
+        {
+            "name": "tsugi/php",
+            "version": "0.0.1-alpha",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/csev/tsugi-php.git",
+                "reference": "a3459b3f3f51505a7895310912eec7b8fe5793ee"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/csev/tsugi-php/zipball/a3459b3f3f51505a7895310912eec7b8fe5793ee",
+                "reference": "a3459b3f3f51505a7895310912eec7b8fe5793ee",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Tsugi\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache 2.0"
+            ],
+            "authors": [
+                {
+                    "name": "csev",
+                    "email": "drchuck@gmail.com",
+                    "homepage": "http://www.dr-chuck.com/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "The PHP Library to build interoperabile learning tools",
+            "homepage": "http://www.tsugi.org/",
+            "time": "2016-01-02 14:53:17"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "tsugi/php": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

@@ -1,0 +1,5 @@
+{
+    "require": {
+        "tsugi/php": "0.0.*@dev"
+    }
+}

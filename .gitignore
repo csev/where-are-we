@@ -3,3 +3,6 @@ pdo.php
 
 *.swp
 
+composer.phar
+vendor
+
