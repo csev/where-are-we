@@ -1,5 +1,8 @@
 {
     "require": {
-        "tsugi/php": "0.0.*@dev"
+        "tsugi/lib": ">=0.0.5@dev"
+    }, 
+    "config": {
+        "preferred-install": "dist"
     }
 }

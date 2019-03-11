@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fe11f21b271a4e1a46c13ca3add7e517",
-    "content-hash": "a86c8ca1216e9e2dafc351891e27064a",
+    "hash": "a315f4e592a103b9e2efa4be895d2005",
+    "content-hash": "818304fd5c7acbe47e0e37256504a532",
     "packages": [
         {
-            "name": "tsugi/php",
-            "version": "0.0.1-alpha",
+            "name": "tsugi/lib",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/csev/tsugi-php.git",
-                "reference": "a3459b3f3f51505a7895310912eec7b8fe5793ee"
+                "reference": "79b2eba615802be7cb31c57f15fc95d55acb24e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/csev/tsugi-php/zipball/a3459b3f3f51505a7895310912eec7b8fe5793ee",
-                "reference": "a3459b3f3f51505a7895310912eec7b8fe5793ee",
+                "url": "https://api.github.com/repos/csev/tsugi-php/zipball/79b2eba615802be7cb31c57f15fc95d55acb24e0",
+                "reference": "79b2eba615802be7cb31c57f15fc95d55acb24e0",
                 "shasum": ""
             },
             "require": {
@@ -27,8 +27,13 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Tsugi\\": "src/"
-                }
+                    "Tsugi\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/tests/",
+                    "phpdoc.dist.xml",
+                    "\n            phpunit.xml.dist"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -44,14 +49,14 @@
             ],
             "description": "The PHP Library to build interoperabile learning tools",
             "homepage": "http://www.tsugi.org/",
-            "time": "2016-01-02 14:53:17"
+            "time": "2016-01-02 20:34:21"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "tsugi/php": 20
+        "tsugi/lib": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

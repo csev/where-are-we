@@ -2,6 +2,7 @@
 pdo.php
 
 *.swp
+.DS_Store
 
 composer.phar
 vendor
